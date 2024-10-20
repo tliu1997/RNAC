@@ -94,7 +94,7 @@ class Walker2dEnv(mujoco_env.MujocoEnv, utils.EzPickle):
             noise_high = self._reset_noise_scale
             noise = self.np_random.uniform(low=noise_low, high=noise_high, size=action.shape)
         action_noise = action + noise
-        self.do_simulation(action, self.frame_skip)
+        self.do_simulation(action_noise, self.frame_skip)
         x_position_after = self.sim.data.qpos[0]
         x_velocity = (x_position_after - x_position_before) / self.dt
 
